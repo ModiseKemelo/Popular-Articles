@@ -14,11 +14,13 @@
     <ion-card-header>
       {{articleToView?.title}}
     </ion-card-header>
-    <p>{{articleToView?.published_date}}</p>
+
+    <ion-card-content>
+
+      <p>{{articleToView?.published_date}}</p>
     <p>{{articleToView?.source}}</p>
     <p>{{articleToView?.section}}</p>
     <p>{{articleToView?.updated}}</p>
-    <ion-card-content>
       <p>{{articleToView?.abstract}} <span class="my-link" (click)="readMore(articleToView?.url)">Read more...</span>
       </p>
 
