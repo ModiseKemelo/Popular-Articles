@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Article </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="art-img" style="height: 25vh; background: gray;"></div>
+  <ion-card style="height: calc(100vh - calc(25vh + 60px));">
+
+    <ion-card-header>
+      {{articleToView?.title}}
+    </ion-card-header>
+    <p>{{articleToView?.published_date}}</p>
+    <p>{{articleToView?.source}}</p>
+    <p>{{articleToView?.section}}</p>
+    <p>{{articleToView?.updated}}</p>
+    <ion-card-content>
+      <p>{{articleToView?.abstract}} <span class="my-link" (click)="readMore(articleToView?.url)">Read more...</span>
+      </p>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
