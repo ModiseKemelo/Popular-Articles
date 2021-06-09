@@ -16,7 +16,7 @@ export class ArticlesService {
 
   constructor(private http: HttpClient) { }
 
-  getAllFacilities(period: number): Observable<any[]> {
+  getAllArticlesInAPeriod(period: number): Observable<any[]> {
     return this.http.get<any[]>(this.mostViewedArticlesApi + period + '.json?api-key=' + this.apiKey, this.httpHeader);
   }
 

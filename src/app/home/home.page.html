@@ -3,7 +3,6 @@
     <ion-header class="ion-no-border">
       <ion-toolbar style="--background: rgb(61, 197, 243);">
         <ion-title color="light" class="ion-text-center">Popular Artciles
-
         </ion-title>
       </ion-toolbar>
     </ion-header>
@@ -11,7 +10,8 @@
       <ion-label class="list-heading" color="light"> {{articlesList.length}} Articles Found
 
       </ion-label>
-      <ion-icon style="margin-right: 16px;" size="large" name="options-sharp" color="light" (click)="openFilter()">
+      <ion-icon style="margin-right: 16px;" size="large" name="options-sharp" color="light"
+        (click)="presentPopover($event)">
       </ion-icon>
     </ion-list-header>
 
@@ -24,7 +24,7 @@
 
   </div>
   <div class="ion-padding content-wrapper">
-    <ion-content style="padding-top: 0px;">
+    <ion-content style="padding-top: 0px; ">
 
       <ion-refresher slot="fixed" color="light" (ionRefresh)="doRefresh($event)" style="z-index: 999;">
         <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
@@ -122,26 +122,31 @@
 
           <ion-list>
             <ion-list-header>
-              Article in the last 1 days
+              Article in the last {{articlePeriod}} day(s)
             </ion-list-header>
 
 
             <ion-item *ngFor="let article of articlesList" (click)="viewDeatil(article)">
-              <!-- <ion-avatar slot="start">
-                <img src="article?.media[0]?.media-metadata[0]?.url">
-              </ion-avatar>-->
+              <!-- <ion-avatar slot="start" style="width: 50px; height: 50px;">
+                <img src="assets/icon/favicon.png">
+              </ion-avatar> -->
               <ion-label>
-                <h2>{{article.title}}</h2>
-                <p>{{article.abstract}}</p>
+                <h2 class="title-txt">{{article.title}}</h2>
+                <!-- <p class="abstract-txt">{{article.abstract}}</p> -->
                 <p>{{article.byline}}</p>
-                <p>{{article.published_date}}</p>
+                <div>
+
+                  <p class="pub-date"><span>
+                      <ion-icon name="calendar" color="primary"></ion-icon>
+                    </span>{{article.published_date}}</p>
+                </div>
+
               </ion-label>
             </ion-item>
           </ion-list>
-
-
-
+          <h5 *ngIf="articlesList.length === 0" class="centre-text" style="text-align: center;">NO ARTICLES FOUND</h5>
         </div>
+
       </ion-list>
     </ion-content>
   </div>
