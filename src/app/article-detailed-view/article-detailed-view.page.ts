@@ -13,7 +13,7 @@ export class ArticleDetailedViewPage implements OnInit {
   constructor(private storageService: StorageService, private iab: InAppBrowser) { }
 
   ngOnInit() {
-    const browser = this.iab.create('https://ionicframework.com/');
+
   }
 
   ionViewWillEnter() {
@@ -26,6 +26,15 @@ export class ArticleDetailedViewPage implements OnInit {
     }).catch(e => {
       console.log('error: ' + e);
     });
+  }
+
+  ionViewDidLeave() {
+    console.log('DID LEAVE');
+    this.storageService.remove('article');
+  }
+
+  readMore(url) {
+    const browser = this.iab.create(url)
   }
 
 }
