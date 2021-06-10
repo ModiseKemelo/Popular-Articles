@@ -110,6 +110,7 @@ export class HomePage implements OnInit {
 
 
   async selectPeriod(event: any) {
+    console.log('Event ', event);
     const popUp = await this.popoverController.create({
       component: PopUpComponent,
       cssClass: 'my-custom-class',
@@ -119,7 +120,13 @@ export class HomePage implements OnInit {
     await popUp.present();
 
     await popUp.onDidDismiss().then((results) => {
-      this.articlePeriod = results.data;
+      // guard against undefined value
+      if (results.data) {
+        this.articlePeriod = results.data;
+      } else {
+        this.articlePeriod = 1;
+      }
+
       this.getArticlesInASpecificPeriod(this.articlePeriod);
     });
 
