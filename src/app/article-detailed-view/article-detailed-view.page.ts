@@ -37,4 +37,8 @@ export class ArticleDetailedViewPage implements OnInit {
     const browser = this.iab.create(url)
   }
 
+  shareArticle() {
+    
+  }
+
 }

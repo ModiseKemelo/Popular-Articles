@@ -18,13 +18,19 @@
     <ion-card-content>
 
       <p>{{articleToView?.published_date}}</p>
-    <p>{{articleToView?.source}}</p>
-    <p>{{articleToView?.section}}</p>
-    <p>{{articleToView?.updated}}</p>
+      <p>{{articleToView?.source}}</p>
+      <p>{{articleToView?.section}}</p>
+      <p>{{articleToView?.updated}}</p>
       <p>{{articleToView?.abstract}} <span class="my-link" (click)="readMore(articleToView?.url)">Read more...</span>
       </p>
 
+
+
     </ion-card-content>
   </ion-card>
-
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="fab-btm-margin">
+    <ion-fab-button size="small" (click)="shareArticle()">
+      <ion-icon name="share-social-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
