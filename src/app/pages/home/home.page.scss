@@ -20,7 +20,7 @@
 
 .title-txt {
   font-size: medium;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .small-txt {
@@ -37,4 +37,8 @@
   font-size: x-small;
   font-weight: 300;
   text-align: center;
+}
+
+ion-item {
+  --border-color: #605ca8;
 }
