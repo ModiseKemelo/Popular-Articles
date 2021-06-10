@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ArticlesService } from '../services/articles.service';
+import { ArticlesService } from '../../services/articles.service';
 import {
   debounceTime
 } from "rxjs/operators";
 import { LoadingController, PopoverController } from '@ionic/angular';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { Toast } from '@capacitor/toast';
-import { StorageService } from '../services/storage.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-home',
