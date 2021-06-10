@@ -37,11 +37,11 @@ export class ArticleDetailedViewPage implements OnInit {
   }
 
   shareArticle() {
-    // Share via email
-    this.socialSharing.shareViaWhatsApp(this.articleToView?.url).then(() => {
-      // Success!
-    }).catch(() => {
-      // Error!
+    // Share via whatsapp
+    this.socialSharing.shareViaWhatsApp(this.articleToView?.url).then(res => {
+      console.log(res);
+    }).catch(error => {
+      console.log(error);
     });
 
   }

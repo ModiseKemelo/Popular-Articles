@@ -54,7 +54,7 @@ export class HomePage implements OnInit {
         this.data = true;
         this.setFilteredFacilities(search);
       });
-    }, 200);
+    }, 1000);
   }
 
 
@@ -111,7 +111,7 @@ export class HomePage implements OnInit {
   }
 
 
-  async presentPopover(event: any) {
+  async showPopoUp(event: any) {
     const popUp = await this.popoverController.create({
       component: PopUpComponent,
       cssClass: 'my-custom-class',
