@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ArticlesService } from '../services/articles.service';
+import { ArticlesService } from '../../services/articles.service';
 import {
   debounceTime
 } from "rxjs/operators";
 import { LoadingController, PopoverController } from '@ionic/angular';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { Toast } from '@capacitor/toast';
-import { StorageService } from '../services/storage.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-home',
@@ -16,14 +16,14 @@ import { StorageService } from '../services/storage.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  articlesData: any;
-  articlesList: any[] = [];
-  filteredArticles: any[] = [];
-  data = false;
+  articlesData: any; // for holding api response data
+  articlesList: any[] = []; // to hold articles list after extracting from the api response
+  filteredArticles: any[] = []; // article results from serac bar
+  data = false; // for shimmer/ loadig animation, shimmer will show when it is false
 
-  searchTerm: string = '';
+  searchTerm: string = ''; // for searching article by title
   searchControl: FormControl;
-  articlePeriod: number
+  articlePeriod: number;  // period for articles to show
 
   constructor(private articlesService: ArticlesService, private router: Router, private loadingController: LoadingController,
     public popoverController: PopoverController, private storageService: StorageService) {
@@ -37,12 +37,13 @@ export class HomePage implements OnInit {
 
 
 
+  // this method run when the page is about to be rendered, then it will make an api call to fetch article
   ionViewWillEnter() {
     setTimeout(() => {
       this.articlesService.getAllArticlesInAPeriod(this.articlePeriod).subscribe(res => {
         this.articlesData = res;
         this.articlesList = this.articlesData.results;
-        console.log(this.articlesList);
+        this.articlesList.sort((a: any, b: any) => (+new Date(b.published_date) - +new Date(a.published_date))); // Sorting article, latest first
         this.filteredArticles = this.articlesList;
       }, error => { },
         () => { });
@@ -52,13 +53,8 @@ export class HomePage implements OnInit {
       this.searchControl.valueChanges.pipe(debounceTime(500)).subscribe(search => {
         this.data = true;
         this.setFilteredFacilities(search);
-
       });
     }, 200);
-
-
-
-
   }
 
 
@@ -96,28 +92,21 @@ export class HomePage implements OnInit {
   }
 
   async getArticlesInASpecificPeriod(period: any) {
-    const loadingDialog = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Fetching articles for the last ' + period + ' days',
-      backdropDismiss: false
-
+    Toast.show({
+      text: 'Fetching articles from ' + period + ' day(s).',
     });
-    await loadingDialog.present();
+    this.data = false;
     this.articlesService.getAllArticlesInAPeriod(this.articlePeriod).subscribe(res => {
       this.articlesData = res;
-      this.articlesList = this.articlesData.results;
-      this.data = false;
-      console.log('Begin async operation');
+      this.articlesList = this.articlesData.results.sort((a: any, b: any) => (+new Date(b.published_date) - +new Date(a.published_date)));
       setTimeout(() => {
-        console.log('Async operation has ended');
         this.data = true;
       }, 2000);
-      loadingDialog.dismiss();
     }, err => {
       Toast.show({
         text: 'Oops, failed to fetch articles, please pull down to refresh again',
       });
-      loadingDialog.dismiss();
+      this.data = true;
     })
   }
 
