@@ -31,3 +31,7 @@ Alternative way to step 2 would be to pluck your android device that has develop
  
  Another way would be by previewing the app in browser and the following command should be run:
  ##### ionic serve
+ 
+ # FOR UNIT TEST AND CODE COVERAGE REPORTS RUN THE FOLLOWING COMMAND
+ ng test --no-watch --code-coverage
+ 
