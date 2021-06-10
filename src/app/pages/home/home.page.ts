@@ -77,7 +77,6 @@ export class HomePage implements OnInit {
   }
 
   searchForFacility(searchTerm) {
-    console.log('Search Item ' + searchTerm, this.filteredArticles.filter(item => { item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 }));
     return this.filteredArticles.filter(item => {
       return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     });
@@ -86,7 +85,6 @@ export class HomePage implements OnInit {
 
 
   viewDeatil(article: any) {
-    console.log('Detailed View ', article);
     this.storageService.set('article', JSON.stringify(article));
     this.router.navigateByUrl('/article-detailed-view');
   }
@@ -121,7 +119,6 @@ export class HomePage implements OnInit {
     await popUp.present();
 
     await popUp.onDidDismiss().then((results) => {
-      console.log('onDidDismiss resolved with role', results.data);
       this.articlePeriod = results.data;
       this.getArticlesInASpecificPeriod(this.articlePeriod);
     });
