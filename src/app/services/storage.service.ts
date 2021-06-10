@@ -33,7 +33,6 @@ export class StorageService {
       }
       return null;
     } catch (reason) {
-      console.log(reason);
       return null;
     }
   }

@@ -2,7 +2,7 @@
   <div class="header-wrapper">
     <ion-header class="ion-no-border">
       <ion-toolbar style="--background: rgb(61, 197, 243);">
-        <ion-title color="light" class="ion-text-center">Popular Artciles
+        <ion-title color="light" class="ion-text-center">My Most Popular Artciles App
         </ion-title>
       </ion-toolbar>
     </ion-header>
@@ -125,15 +125,17 @@
               Article in the last {{articlePeriod}} day(s)
             </ion-list-header>
 
-
             <ion-item *ngFor="let article of articlesList" (click)="viewDeatil(article)">
-              <!-- <ion-avatar slot="start" style="width: 50px; height: 50px;">
-                <img src="assets/icon/favicon.png">
-              </ion-avatar> -->
+              <div *ngFor="let image of article.media">
+                <div *ngFor="let metadata of image['media-metadata']; let first = first">
+                  <div *ngIf="first" class="avatar-img">
+                    <img class="img-place" *ngIf="first" src={{metadata.url}} alt="">
+                  </div>
+                </div>
+              </div>
               <ion-label>
                 <h2 class="title-txt">{{article.title}}</h2>
-                <!-- <p class="abstract-txt">{{article.abstract}}</p> -->
-                <p>{{article.byline}}</p>
+                <p class="by-line">{{article.byline}}</p>
                 <div>
 
                   <p class="pub-date"><span>
@@ -144,16 +146,15 @@
               </ion-label>
             </ion-item>
           </ion-list>
-          <h5 *ngIf="articlesList.length === 0" class="centre-text" style="text-align: center;">NO ARTICLES FOUND</h5>
+          <h5 *ngIf="articlesList.length === 0" class="centre-text">NO ARTICLES FOUND</h5>
         </div>
 
       </ion-list>
+      <ion-footer>
+        <ion-toolbar>
+          <ion-title class="copyright-txt">{{articlesData?.copyright}}</ion-title>
+        </ion-toolbar>
+      </ion-footer>
     </ion-content>
   </div>
-
-
-
-
-
-
 </div>

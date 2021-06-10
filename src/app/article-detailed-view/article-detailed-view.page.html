@@ -8,19 +8,31 @@
 </ion-header>
 
 <ion-content>
-  <div class="art-img" style="height: 25vh; background: gray;"></div>
-  <ion-card style="height: calc(100vh - calc(25vh + 60px));">
+  <div *ngFor="let i of articleToView?.media">
+    <div *ngFor="let c of i['media-metadata']; let last = last" style="height: 100%;">
+      <div *ngIf="last" class="img-wrapper">
+        <img class="article-img" *ngIf="last" src={{c.url}} alt="">
+        <div *ngIf="last" class="caption-wrapper">
+          <p class="img-caption">
+            {{i.caption}}
+          </p>
+        </div>
 
-    <ion-card-header>
+      </div>
+
+    </div>
+  </div>
+
+  <ion-card class="article-wrapper">
+    <ion-card-header class="title-txt">
       {{articleToView?.title}}
     </ion-card-header>
-
     <ion-card-content>
 
-      <p>{{articleToView?.published_date}}</p>
-    <p>{{articleToView?.source}}</p>
-    <p>{{articleToView?.section}}</p>
-    <p>{{articleToView?.updated}}</p>
+      <p class="artice-dates">Published {{articleToView?.published_date}} , Updated {{articleToView?.updated}}</p>
+      <p><span class="bold-txt">Source: </span>{{articleToView?.source}}</p>
+      <p><span class="bold-txt">Section: </span>{{articleToView?.section}}</p>
+      <p></p>
       <p>{{articleToView?.abstract}} <span class="my-link" (click)="readMore(articleToView?.url)">Read more...</span>
       </p>
 

@@ -17,11 +17,9 @@ export class ArticleDetailedViewPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    console.log('ionViewWillEnter');
     this.storageService.get('article').then(result => {
       if (result != null) {
         this.articleToView = result;
-        console.log(result);
       }
     }).catch(e => {
       console.log('error: ' + e);
@@ -29,10 +27,10 @@ export class ArticleDetailedViewPage implements OnInit {
   }
 
   ionViewDidLeave() {
-    console.log('DID LEAVE');
     this.storageService.remove('article');
   }
 
+  // opening in app browser to read an articl in detail
   readMore(url) {
     const browser = this.iab.create(url)
   }

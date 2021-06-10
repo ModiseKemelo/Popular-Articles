@@ -3,3 +3,46 @@
   color: blue;
   text-decoration: underline;
 }
+
+.article-wrapper {
+  height: calc(100vh - calc(25vh + 60px));
+}
+
+.title-txt {
+  color: black;
+  font-weight: 500;
+}
+
+.artice-dates {
+  font-size: smaller;
+  font-weight: normal;
+}
+
+.img-wrapper {
+  height: 25vh;
+}
+
+.article-img {
+  width: 100%;
+  height: 100%;
+}
+
+.caption-wrapper {
+  position: relative;
+  top: -40px;
+  background: rgba(17, 17, 17, 0.5);
+  text-align: justify;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.img-caption {
+  font-size: x-small;
+  font-weight: 100;
+  color: rgb(255, 255, 255);
+}
+
+.bold-txt {
+  font-weight: 500;
+  color: black;
+}
