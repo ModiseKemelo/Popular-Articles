@@ -18,7 +18,7 @@ To clone and run the app, follow the folling instractions:
 Clone the project by running the following command:
  ##### git clone https://github.com/ModiseKemelo/Popular-Articles
  
- Then cd into Popular-Articles and run the following commands to run the project:
+ Then cd into Popular-Articles and run the following commands on the terminal to run the project:
  ##### 1. npm install 
                (this will install all project dependencies and required packages) when its donw, proceed to 2 below
  ##### 2. ionic capacitor build 
