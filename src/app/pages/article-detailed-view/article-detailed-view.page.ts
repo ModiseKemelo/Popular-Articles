@@ -37,7 +37,7 @@ export class ArticleDetailedViewPage implements OnInit {
   }
 
   shareArticle() {
-    // Share via whatsapp
+    //TODO finish later -Share via whatsapp
     this.socialSharing.shareViaWhatsApp(this.articleToView?.url).then(res => {
       console.log(res);
     }).catch(error => {

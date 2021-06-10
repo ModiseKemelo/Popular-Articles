@@ -109,7 +109,7 @@ export class HomePage implements OnInit {
   }
 
 
-  async showPopoUp(event: any) {
+  async selectPeriod(event: any) {
     const popUp = await this.popoverController.create({
       component: PopUpComponent,
       cssClass: 'my-custom-class',

@@ -10,8 +10,8 @@
       <ion-label class="list-heading" color="light"> {{articlesList.length}} Articles Found
 
       </ion-label>
-      <ion-icon style="margin-right: 16px;" size="large" name="ellipsis-vertical-sharp" color="light"
-        (click)="showPopoUp($event)">
+      <ion-icon style="margin-right: 16px;" size="large"  name="ellipsis-vertical-sharp" color="light"
+        (click)="selectPeriod($event)">
       </ion-icon>
     </ion-list-header>
 
@@ -19,7 +19,6 @@
     <ion-card class="searchbar-wrapper">
       <ion-searchbar style="margin-top: 0px;" mode="ios" placeholder="Search For Articles" color="light"
         class="searchbar-input" [formControl]="searchControl" (ionChange)="onSearchInput()"></ion-searchbar>
-
     </ion-card>
 
   </div>
